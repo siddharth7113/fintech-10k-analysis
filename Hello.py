@@ -1,51 +1,71 @@
-# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import streamlit as st
-from streamlit.logger import get_logger
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
 
-LOGGER = get_logger(__name__)
+# Setup base directory relative to the script location
+base_dir = Path(__file__).resolve().parent
+# Data paths for textual insights and financial data
+text_data = {
+    'AAPL': base_dir / 'data/text/AAPL_combined.txt',
+    'DELL': base_dir / 'data/text/DELL_combined.txt',
+    'GOOGL': base_dir / 'data/text/GOOGL_combined.txt',
+    'MSFT': base_dir / 'data/text/MSFT_combined.txt'
+}
+csv_data = {
+    'AAPL': base_dir / 'data/csv/AAPL_combined_financial_data.csv',
+    'DELL': base_dir / 'data/csv/DELL_combined_financial_data.csv',
+    'GOOGL': base_dir / 'data/csv/GOOGL_combined_financial_data.csv',
+    'MSFT': base_dir / 'data/csv/MSFT_combined_financial_data.csv'
+}
 
+def load_text_data(company):
+    with open(text_data[company], 'r', encoding='utf-8') as file:
+        content = file.read()
+    return content
 
-def run():
-    st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
-    )
+# Function to load financial data from CSV
+def load_financial_data(company):
+    df = pd.read_csv(csv_data[company])
+    df.columns = [col.strip().title() for col in df.columns]  # Normalize column names
+    print("Normalized columns:", df.columns)  # Debugging: print normalized column names
+    return df
 
-    st.write("# Welcome to Streamlit! 👋")
+# Custom CSS for better aesthetics
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-    st.sidebar.success("Select a demo above.")
+# Loading a local CSS file
+local_css(base_dir / 'styles/main.css')
 
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
+# Streamlit app layout
+st.sidebar.title('Select Firm')
+company = st.sidebar.selectbox('Choose a company:', list(text_data.keys()))
 
+# Main area
+st.title('Insights from 10-K from Public Firms')
+st.header(f'Important Insights for {company}')
+insights = load_text_data(company)
+st.text(insights)
 
-if __name__ == "__main__":
-    run()
+# Plotting financial data
+# Load and display financial data plots
+try:
+    financial_data = load_financial_data(company)
+
+    # Check if necessary columns exist before plotting
+    if 'Year' in financial_data.columns and 'Revenue' in financial_data.columns:
+        fig, ax = plt.subplots()
+        ax.plot(financial_data['Year'], financial_data['Revenue'], marker='o', linestyle='-')
+        ax.set_title('Revenue Over Years')
+        ax.set_xlabel('Year')
+        ax.set_ylabel('Revenue ($ in millions)')
+        st.pyplot(fig)
+    else:
+        st.error("The necessary columns for plotting are not available in the CSV file.")
+except Exception as e:
+    st.error(f"Failed to load or plot data due to: {str(e)}")
+
+st.header('Plots Accompanying the Data')
+st.write('These plots are generated from the financial data extracted from the CSV files.')

@@ -1,0 +1,162 @@
+ Based on the information provided, here is a year-wise breakdown of all financial points that could be later used to convert into CSV using regex in python:
+
+1995
+
+* Revenue: $7.2 billion
+* Net Income: $152 million
+
+1996
+
+* Revenue: $8.4 billion
+* Net Income: $146 million
+
+1997
+
+* Revenue: $10.0 billion
+* Net Income: $154 million
+
+1998
+
+* Revenue: $11.4 billion
+* Net Income: $169 million
+
+1999
+
+* Revenue: $15.0 billion
+* Net Income: $230 million
+
+2000
+
+* Revenue: $22.5 billion
+* Net Income: $482 million
+
+2001
+
+* Revenue: $32.4 billion
+* Net Income: $581 million
+
+2002
+
+* Revenue: $46.7 billion
+* Net Income: $922 million
+
+2003
+
+* Revenue: $59.2 billion
+* Net Income: $1,045 million
+
+2004
+
+* Revenue: $48.9 billion
+* Net Income: $895 million
+
+2005
+
+* Revenue: $59.2 billion (same as 2003)
+* Net Income: $1,045 million (same as 2003)
+
+2006
+
+* Revenue: $43.3 billion
+* Net Income: $846 million
+
+2007
+
+* Revenue: $47.6 billion
+* Net Income: $879 million
+
+2008
+
+* Revenue: $60.8 billion
+* Net Income: $1,058 million
+
+2009
+
+* Revenue: $75.7 billion
+* Net Income: $2,685 million
+
+2010
+
+* Revenue: $79.4 billion
+* Net Sales: $82.1 million
+* Operating Income: $18.8 million
+
+2011
+
+* Revenue: $75.7 billion
+* Net Sales: $82.2 million
+* Operating Income: $19.2 million
+
+2012
+
+* Revenue: $74.5 billion
+* Net Sales: $82.6 million
+* Operating Income: $19.8 million
+
+2013
+
+* Revenue: $156.9 billion
+* Net Sales: $86.6 million
+* Operating Income: $27.0 million
+
+2014
+
+* Revenue: $152.1 billion
+* Net Sales: $79.7 million
+* Operating Income: $20.7 million
+
+2015
+
+* Revenue: $157.7 billion
+* Net Sales: $82.1 million
+* Operating Income: $25.9 million
+
+2016
+
+* Revenue: $156.2 billion
+* Net Sales: $86.4 million
+* Operating Income: $21.5 million
+
+2017
+
+* Revenue: $219.8 billion
+* Net Sales: $108.8 million
+* Operating Income: $22.4 million
+
+2018
+
+* Revenue: $233.8 billion
+* Net Sales: $119.9 million
+* Operating Income: $22.8 million
+
+2019
+
+* Revenue: $238.3 billion
+* Net Sales: $125.3 million
+* Operating Income: $22.5 million
+
+2020
+
+* Revenue: $252.0 billion
+* Net Sales: $136.1 million
+* Operating Income: $21.0 million
+
+2021
+
+* Revenue: $248.8 billion
+* Net Sales: $124.8 million
+* Operating Income: $16.3 million
+
+2022
+
+* Revenue: $278.5 billion
+* Net Sales: $127.2 million
+* Operating Income: $23.6 million
+
+2023
+
+* Revenue: $309.8 billion
+* Net Sales: $119.5 million
+* Operating Income: $22.2 million
+
+It's worth noting that some of the financial data in the table might have some missing values. Also, the financial data needs to be validated to ensure that they are accurate and consistent.
